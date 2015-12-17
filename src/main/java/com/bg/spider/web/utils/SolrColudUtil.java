@@ -8,7 +8,6 @@ import org.apache.solr.client.solrj.impl.CloudSolrServer;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.bg.spider.web.domain.IdeInfoIndexBean;
 /**
  * 
