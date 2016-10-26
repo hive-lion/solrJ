@@ -7,12 +7,12 @@ import org.slf4j.LoggerFactory;
 import com.bg.spider.web.domain.Article;
 
 /**
- * solr¹¤¾ßÀà
+ * solrå·¥å…·ç±»
  *
  */
 public class SolrUtil {
 	static final Logger logger = LoggerFactory.getLogger(SolrUtil.class);
-	private static final String SOLR_URL = "http://192.168.120.199:8983/solr/collection1"; // ·şÎñÆ÷µØÖ·
+	private static final String SOLR_URL = "http://192.168.120.199:8983/solr/collection1"; // æœåŠ¡å™¨åœ°å€
 	private static HttpSolrServer server = null;
 
 	static {
@@ -29,7 +29,7 @@ public class SolrUtil {
 			 */
 
 			/**
-			 * Á¬½ÓsolrCloud
+			 * è¿æ¥solrCloud
 			 */
 			/*
 			 * String zkHost = "192.168.1.170:2181,192.168.1.171:2181";
@@ -40,14 +40,14 @@ public class SolrUtil {
 			 */
 
 		} catch (Exception e) {
-			logger.error("Çë¼ì²étomcat·şÎñÆ÷»ò¶Ë¿ÚÊÇ·ñ¿ªÆô!{}", e);
+			logger.error("è¯·æ£€æŸ¥tomcatæœåŠ¡å™¨æˆ–ç«¯å£æ˜¯å¦å¼€å¯!{}", e);
 			e.printStackTrace();
 		}
 
 	}
 
 	/**
-	 * ½¨Á¢Ë÷Òı
+	 * å»ºç«‹ç´¢å¼•
 	 * 
 	 * @throws Exception
 	 */
@@ -61,7 +61,7 @@ public class SolrUtil {
 	}
 
 	/**
-	 * ¸ù¾İId½øĞĞÉ¾³ı
+	 * æ ¹æ®Idè¿›è¡Œåˆ é™¤
 	 */
 	public static void DelById() {
 		try {
@@ -73,7 +73,7 @@ public class SolrUtil {
 	}
 
 	/**
-	 * Í¨¹ı²éÑ¯Ìõ¼ş½øĞĞÉ¾³ı
+	 * é€šè¿‡æŸ¥è¯¢æ¡ä»¶è¿›è¡Œåˆ é™¤
 	 */
 	private static void DelByQuery() {
 		try {

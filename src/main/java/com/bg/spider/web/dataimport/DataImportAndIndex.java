@@ -12,7 +12,7 @@ import com.bg.spider.web.domain.Article;
 import com.bg.spider.web.utils.HbaseUtils;
 import com.bg.spider.web.utils.SolrUtil;
 /**
- * Ä£ÄâÊı¾İÔ´Íùsolr¡¢ºÍhbaseÖĞµ¼ÈëÊı¾İ
+ * æ¨¡æ‹Ÿæ•°æ®æºå¾€solrã€å’Œhbaseä¸­å¯¼å…¥æ•°æ®
  * @author Administrator
  *
  */
@@ -20,10 +20,10 @@ public class DataImportAndIndex {
 	
 	public static void main(String[] args) throws java.lang.Exception {
 		List<Article> arrayList = new ArrayList<Article>();
-		//TODO ´ÓÆäËûÊı¾İÔ´¶ÁÈ¡Êı¾İ
+		//TODO ä»å…¶ä»–æ•°æ®æºè¯»å–æ•°æ®
 		File file = new File("F:\\article.txt");
 		if(!file.exists()){
-			System.err.println("ÎÄ¼ş²»´æÔÚ£¡");
+			System.err.println("æ–‡ä»¶ä¸å­˜åœ¨ï¼");
 		}
 		InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(file), "UTF-8");
 		
@@ -44,9 +44,9 @@ public class DataImportAndIndex {
 		
 		HbaseUtils hbaseUtils = new HbaseUtils();
 		for (Article article : arrayList) {
-			//°ÑÊı¾İ²åÈësolr
+			//æŠŠæ•°æ®æ’å…¥solr
 			SolrUtil.addIndex(article);
-			//°ÑÊı¾İ²åÈëhbase
+			//æŠŠæ•°æ®æ’å…¥hbase
 			try {
 				hbaseUtils.put(hbaseUtils.TABLE_NAME, article.getId()+"", hbaseUtils.COLUMNFAMILY_1, hbaseUtils.COLUMNFAMILY_1_TITLE, article.getTitle());
 				hbaseUtils.put(hbaseUtils.TABLE_NAME, article.getId()+"", hbaseUtils.COLUMNFAMILY_1, hbaseUtils.COLUMNFAMILY_1_AUTHOR, article.getAuthor());

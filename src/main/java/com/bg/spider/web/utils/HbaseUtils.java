@@ -29,15 +29,15 @@ import com.bg.spider.web.domain.Article;
 public class HbaseUtils {
 	
 	/**
-	 * HBASE ±íÃû³Æ
+	 * HBASE è¡¨åç§°
 	 */
 	public  final String TABLE_NAME = "article";
 	/**
-	 * ÁĞ´Ø1 ÎÄÕÂĞÅÏ¢
+	 * åˆ—ç°‡1 æ–‡ç« ä¿¡æ¯
 	 */
 	public  final String COLUMNFAMILY_1 = "info";
 	/**
-	 * ÁĞ´Ø1ÖĞµÄÁĞ
+	 * åˆ—ç°‡1ä¸­çš„åˆ—
 	 */
 	public  final String COLUMNFAMILY_1_TITLE = "title";
 	public  final String COLUMNFAMILY_1_AUTHOR = "author";
@@ -49,7 +49,7 @@ public class HbaseUtils {
 	HBaseAdmin admin=null;
 	Configuration conf=null;
 	/**
-	 * ¹¹Ôìº¯Êı¼ÓÔØÅäÖÃ
+	 * æ„é€ å‡½æ•°åŠ è½½é…ç½®
 	 */
 	public HbaseUtils(){
 		conf = new Configuration();
@@ -63,29 +63,29 @@ public class HbaseUtils {
 	}
 	public static void main(String[] args) throws Exception {
 		HbaseUtils hbase = new HbaseUtils();
-		//´´½¨Ò»ÕÅ±í
+		//åˆ›å»ºä¸€å¼ è¡¨
 //		hbase.createTable("stu","cf");
-//		//²éÑ¯ËùÓĞ±íÃû
+//		//æŸ¥è¯¢æ‰€æœ‰è¡¨å
 //		hbase.getALLTable();
-//		//Íù±íÖĞÌí¼ÓÒ»Ìõ¼ÇÂ¼
+//		//å¾€è¡¨ä¸­æ·»åŠ ä¸€æ¡è®°å½•
 //		hbase.addOneRecord("stu","key1","cf","name","zhangsan");
 //		hbase.addOneRecord("stu","key1","cf","age","24");
-//		//²éÑ¯Ò»Ìõ¼ÇÂ¼
+//		//æŸ¥è¯¢ä¸€æ¡è®°å½•
 //		hbase.getKey("stu","key1");
-//		//»ñÈ¡±íµÄËùÓĞÊı¾İ
+//		//è·å–è¡¨çš„æ‰€æœ‰æ•°æ®
 //		hbase.getALLData("stu");
-//		//É¾³ıÒ»Ìõ¼ÇÂ¼
+//		//åˆ é™¤ä¸€æ¡è®°å½•
 //		hbase.deleteOneRecord("stu","key1");
-//		//É¾³ı±í
+//		//åˆ é™¤è¡¨
 //		hbase.deleteTable("stu");
-		//scan¹ıÂËÆ÷µÄÊ¹ÓÃ
+		//scanè¿‡æ»¤å™¨çš„ä½¿ç”¨
 //		hbase.getScanData("stu","cf","age");
-		//rowFilterµÄÊ¹ÓÃ
+		//rowFilterçš„ä½¿ç”¨
 		//84138413_20130313145955
 		hbase.getRowFilter("waln_log","^*_201303131400\\d*$");
 	}
 	/**
-	 * rowFilterµÄÊ¹ÓÃ
+	 * rowFilterçš„ä½¿ç”¨
 	 * @param tableName
 	 * @param reg
 	 * @throws Exception
@@ -109,7 +109,7 @@ public class HbaseUtils {
 	ResultScanner scanner = hTable.getScanner(scan);
 	for (Result result : scanner) {
 		if(result.raw().length==0){
-			System.out.println(tableName+" ±íÊı¾İÎª¿Õ£¡");
+			System.out.println(tableName+" è¡¨æ•°æ®ä¸ºç©ºï¼");
 		}else{
 			for (KeyValue kv: result.raw()){
 				System.out.println(new String(kv.getKey())+"\t"+new String(kv.getValue()));
@@ -122,16 +122,16 @@ public class HbaseUtils {
 			if (admin.tableExists(tableName)) {
 				admin.disableTable(tableName);
 				admin.deleteTable(tableName);
-				System.out.println(tableName+"±íÉ¾³ı³É¹¦£¡");
+				System.out.println(tableName+"è¡¨åˆ é™¤æˆåŠŸï¼");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.out.println(tableName+"±íÉ¾³ıÊ§°Ü£¡");
+			System.out.println(tableName+"è¡¨åˆ é™¤å¤±è´¥ï¼");
 		}
 		
 	}
 	/**
-	 * É¾³ıÒ»Ìõ¼ÇÂ¼
+	 * åˆ é™¤ä¸€æ¡è®°å½•
 	 * @param tableName
 	 * @param rowKey
 	 */
@@ -141,14 +141,14 @@ public class HbaseUtils {
 		Delete delete = new Delete(rowKey.getBytes());
 		try {
 			table.delete(delete);
-			System.out.println(rowKey+"¼ÇÂ¼É¾³ı³É¹¦£¡");
+			System.out.println(rowKey+"è®°å½•åˆ é™¤æˆåŠŸï¼");
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.out.println(rowKey+"¼ÇÂ¼É¾³ıÊ§°Ü£¡");
+			System.out.println(rowKey+"è®°å½•åˆ é™¤å¤±è´¥ï¼");
 		}
 	}
 	/**
-	 * »ñÈ¡±íµÄËùÓĞÊı¾İ
+	 * è·å–è¡¨çš„æ‰€æœ‰æ•°æ®
 	 * @param tableName
 	 */
 	public void getALLData(String tableName) {
@@ -158,7 +158,7 @@ public class HbaseUtils {
 			ResultScanner scanner = hTable.getScanner(scan);
 			for (Result result : scanner) {
 				if(result.raw().length==0){
-					System.out.println(tableName+" ±íÊı¾İÎª¿Õ£¡");
+					System.out.println(tableName+" è¡¨æ•°æ®ä¸ºç©ºï¼");
 				}else{
 					for (KeyValue kv: result.raw()){
 						System.out.println(new String(kv.getKey())+"\t"+new String(kv.getValue()));
@@ -171,7 +171,7 @@ public class HbaseUtils {
 		
 	}
 	
-	// ¶ÁÈ¡Ò»Ìõ¼ÇÂ¼
+	// è¯»å–ä¸€æ¡è®°å½•
 		@SuppressWarnings({ "deprecation", "resource" })
 		public  Article get(String tableName, String row) {
 			HTablePool hTablePool = new HTablePool(conf, 1000);
@@ -197,7 +197,7 @@ public class HbaseUtils {
 		}
 		
 		
-		// Ìí¼ÓÒ»Ìõ¼ÇÂ¼
+		// æ·»åŠ ä¸€æ¡è®°å½•
 		public  void put(String tableName, String row, String columnFamily,
 				String column, String data) throws IOException {
 			HTablePool hTablePool = new HTablePool(conf, 1000);
@@ -212,7 +212,7 @@ public class HbaseUtils {
 	
 	
 	/**
-	 * ²éÑ¯ËùÓĞ±íÃû
+	 * æŸ¥è¯¢æ‰€æœ‰è¡¨å
 	 * @return
 	 * @throws Exception
 	 */
@@ -230,19 +230,19 @@ public class HbaseUtils {
 		return tables;
 	}
 	/**
-	 * ´´½¨Ò»ÕÅ±í
+	 * åˆ›å»ºä¸€å¼ è¡¨
 	 * @param tableName
 	 * @param column
 	 * @throws Exception
 	 */
 	public void createTable(String tableName, String column) throws Exception {
 		if(admin.tableExists(tableName)){
-			System.out.println(tableName+"±íÒÑ¾­´æÔÚ£¡");
+			System.out.println(tableName+"è¡¨å·²ç»å­˜åœ¨ï¼");
 		}else{
 			HTableDescriptor tableDesc = new HTableDescriptor(tableName);
 			tableDesc.addFamily(new HColumnDescriptor(column.getBytes()));
 			admin.createTable(tableDesc);
-			System.out.println(tableName+"±í´´½¨³É¹¦£¡");
+			System.out.println(tableName+"è¡¨åˆ›å»ºæˆåŠŸï¼");
 		}
 	}
 }

@@ -4,7 +4,7 @@ import org.apache.solr.client.solrj.beans.Field;
 
 
 /**
- * ÎÄÕÂÊµÌåÀà
+ * æ–‡ç« å®ä½“ç±»
  * @author Administrator
  *
  */

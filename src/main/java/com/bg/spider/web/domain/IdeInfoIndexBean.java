@@ -6,8 +6,8 @@ import org.apache.solr.client.solrj.beans.Field;
 /**
  * 
  * @author bbaiggey
- * @date 2015Äê5ÔÂ18ÈÕÏÂÎç3:27:09
- * @DESC Éí·İĞÅÏ¢
+ * @date 2015å¹´5æœˆ18æ—¥ä¸‹åˆ3:27:09
+ * @DESC èº«ä»½ä¿¡æ¯
  */
 public class IdeInfoIndexBean {
 
@@ -17,12 +17,12 @@ public class IdeInfoIndexBean {
 	@Field
 	private String id;
 	/**
-	 * Éí·İ±àºÅ
+	 * èº«ä»½ç¼–å·
 	 */
 	@Field
 	private String ideNo;
 	/**
-	 * ²éÑ¯Ìõ¼ş
+	 * æŸ¥è¯¢æ¡ä»¶
 	 */
 	@Field
 	private String collect;

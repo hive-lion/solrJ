@@ -12,8 +12,8 @@ import com.bg.spider.web.domain.IdeInfoIndexBean;
 /**
  * 
  * @author bbaiggey
- * @date 2015Äê5ÔÂ19ÈÕÏÂÎç2:54:05
- * @DESC SolrColud¹¤¾ßÀà
+ * @date 2015å¹´5æœˆ19æ—¥ä¸‹åˆ2:54:05
+ * @DESC SolrColudå·¥å…·ç±»
  */
 public class SolrColudUtil {
 	static final Logger logger = LoggerFactory.getLogger(SolrColudUtil.class);
@@ -27,7 +27,7 @@ public class SolrColudUtil {
 		server.setDefaultCollection("collection1");
 		
 		}catch (Exception e) {
-			logger.error("Çë¼ì²étomcat·şÎñÆ÷»ò¶Ë¿ÚÊÇ·ñ¿ªÆô!{}",e);
+			logger.error("è¯·æ£€æŸ¥tomcatæœåŠ¡å™¨æˆ–ç«¯å£æ˜¯å¦å¼€å¯!{}",e);
 			e.printStackTrace();
 		}
 	}
@@ -35,7 +35,7 @@ public class SolrColudUtil {
 	
 	
 	/**
-	 * ½¨Á¢Ë÷Òı
+	 * å»ºç«‹ç´¢å¼•
 	 * @throws Exception
 	 */
 	public static void addIndex(Object obj) {
@@ -49,8 +49,8 @@ public class SolrColudUtil {
 	
 	/**
 	 * 
-	 * @param key  ÒªÉ¾³ıµÄÊôĞÔÃû
-	 * @param val  ÒªÉ¾³ıµÄÖµ
+	 * @param key  è¦åˆ é™¤çš„å±æ€§å
+	 * @param val  è¦åˆ é™¤çš„å€¼
 	 */
 	public static void DelByQuery(String key,String val) {
 		try {
